@@ -1,23 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
+  
 })
-export class AppComponent {
+
+
+
+
+export class AppComponent implements OnInit {
+  
   title = 'projetoBase';
-  codigoRMA: number | undefined;
-   Nome: string = "";
-   nota1: number = 0;
-   nota2: number = 0;
-   nota3: number = 0;
-   nota4: number = 0;
-   Media: number = 0;
+  codigoRMA: number = 12345;
+  nome: string = "";
+  nota1: number = 0;
+  nota2: number = 0;
+  nota3: number = 0;
+  nota4: number = 0;
+  Media = (this.nota1 + this.nota2 + this.nota3 + this.nota4) / 4;
+ 
+
+  calcularMedia() {
+    this.Media = (this.nota1 + this.nota2 + this.nota3 + this.nota4) / 4;
+  }
 
   constructor() {
-   this.Media = this.nota1 + this.nota2 + this.nota3 + this.nota4 /4;
-
   }
 
   ngOnInit(): void {
