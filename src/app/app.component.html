@@ -1,48 +1,60 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
 <div id="tudo">
-    <h1 style="padding-left:40%; padding-top: 20px; margin-bottom: 30px;">Calcular Média</h1>
-    <div class="container">
-        <div clas="form-group">
-            <div class="row">
-                <div class="col">
-                    <label><b>Codigo RMA</b></label>
-                    <input type="text" class="form-control" [(ngModel)]="codigoRMA" placeholder="Codigo RMA" min="0"
-                        max="10000" required>
+    <div id="header">
+        <h1
+            style="padding-left:500px; padding-top: 20px; margin-bottom: 30px;font-family: 'Press Start 2P', cursive, bold; color: rgb(233, 132, 0);">
+            Calcular Média</h1>
+    </div>
+    <div class="corpo">
+        <div class="container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label><b>Codigo RMA</b></label>
+                        <input type="text" class="form-control" [(ngModel)]="codigoRMA" placeholder="Codigo RMA" min="0"
+                            max="10000" required>
 
-                    <label><b>Nome</b></label>
-                    <input type="text" class="form-control" [(ngModel)]="nome" placeholder="Nome" required>
+                        <label><b>Nome</b></label>
+                        <input type="text" class="form-control" [(ngModel)]="nome" placeholder="Nome" required>
 
-                    <label><b>Nota 1</b></label>
-                    <input type="number" class="form-control" [(ngModel)]="nota1" placeholder="Nota 1" min="0" max="10"
-                        required>
+                        <label><b>Nota 1</b></label>
+                        <input type="number" class="form-control" [(ngModel)]="nota1" placeholder="Nota 1" min="0"
+                            max="10" required>
+                    </div>
+                    <div class="col">
+                        <label><b>Nota 2</b></label>
+                        <input type="number" class="form-control" [(ngModel)]="nota2" placeholder="Nota 2" min="0"
+                            max="10" required>
+
+                        <label><b>Nota 3</b></label>
+                        <input type="number" class="form-control" [(ngModel)]="nota3" placeholder="Nota 3" min="0"
+                            max="10" required>
+
+                        <label><b>Nota 4</b></label>
+                        <input type="number" class="form-control" [(ngModel)]="nota4" placeholder="Nota 4" min="0"
+                            max="10" required>
+                    </div>
                 </div>
-                <div class="col">
-                    <label><b>Nota 2</b></label>
-                    <input type="number" class="form-control" [(ngModel)]="nota2" placeholder="Nota 2" min="0" max="10"
-                        required>
-
-                    <label><b>Nota 3</b></label>
-                    <input type="number" class="form-control" [(ngModel)]="nota3" placeholder="Nota 3" min="0" max="10"
-                        required>
-
-                    <label><b>Nota 4</b></label>
-                    <input type="number" class="form-control" [(ngModel)]="nota4" placeholder="Nota 4" min="0" max="10"
-                        required>
+                <label style="padding-top:10px; font-size:20px;"><b>Sua Média é:</b></label>
+                <br>
+                <h2>{{Media}}</h2>
+                <div class="resultado" style="display:inline-flex;">
+                    <p><b>Sua situação é:</b></p>
+                    <span *ngIf="Media >= 7; else elseBlock" class="badge badge-success"
+                        style="padding: 10px ; margin-bottom: 20px; margin-left: 5px;">Aprovado</span>
+                    <ng-template #elseBlock>
+                        <span class="badge badge-danger"
+                            style="padding: 10px ; margin-bottom: 20px; margin-left: 5px;">Reprovado</span>
+                    </ng-template>
                 </div>
             </div>
-            <label style="padding-top:10px; font-size:20px;"><b>Sua Média é:</b></label>
-            <br>
-            <h2>{{Media}}</h2>
-            <div class="resultado" style="display:inline-flex;">
-                <p><b>Sua situação é:</b></p>
-                <span *ngIf="Media >= 7; else elseBlock" class="badge badge-success"
-                    style="padding: 10px ; margin-bottom: 20px; margin-left: 5px;">Aprovado</span>
-                <ng-template #elseBlock>
-                    <span class="badge badge-danger"
-                        style="padding: 10px ; margin-bottom: 20px; margin-left: 5px;">Reprovado</span>
-                </ng-template>
-            </div>
+            <button type="button" class="btn btn-primary" style=" padding-left: 50%; padding-right: 45%;"
+                (click)="calcularMedia()">Calcular</button>
         </div>
-        <button type="button" class="btn btn-primary" style=" padding-left: 50%; padding-right: 45%;" (click)="calcularMedia()">Calcular</button>
     </div>
 </div>
 <router-outlet></router-outlet>
